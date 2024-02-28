@@ -1,5 +1,7 @@
 const { response, request } = require("express");
 const { sequileze, Users: userModel } = require("../models");
+const { keyToken } = require("../config");
+const jwt = require("jsonwebtoken");
 
 const creatUser = async (req = request, resp = response) => {
   const transaction = await sequileze.transaction();
@@ -37,6 +39,12 @@ const creatUser = async (req = request, resp = response) => {
   }
 };
 
+const login = async (req = request, resp = response) => {
+  const token = jwt.sign({ id: 1 }, keyToken, { expiresIn: "1d" });
+  resp.json({ token });
+};
+
 module.exports = {
   creatUser,
+  login,
 };

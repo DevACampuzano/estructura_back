@@ -5,5 +5,5 @@ module.exports = {
   PasswordDb: process.env.PASSWORDDB,
   portDb: process.env.PORTDB,
   hostDB: process.env.HOSTDB,
-  leyToken: process.env.KEYTOKEN,
+  keyToken: process.env.KEYTOKEN,
 };

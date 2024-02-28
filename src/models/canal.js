@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
-    "Users",
+  const Channel = sequelize.define(
+    "Channel",
     {
       id: {
         type: DataTypes.BIGINT(20),
@@ -11,32 +11,25 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(500),
         allowNull: false,
       },
-      email: {
-        type: DataTypes.STRING(500),
+      descripcion: {
+        type: DataTypes.TEXT,
         allowNull: false,
       },
-      password: {
-        type: DataTypes.STRING(500),
-        allowNull: false,
-      },
-      profile: {
+      vp_categoria: {
         type: DataTypes.BIGINT(20),
-        allowNull: true,
+        allowNull: false,
       },
       estado: {
         type: DataTypes.TINYINT(4),
         defaultValue: 1,
       },
     },
-    {
-      tableName: "Usuarios",
-      timestamps: false,
-    }
+    { tableName: "canal" }
   );
 
-  User.associate = function (model) {
-    User.belongsToMany(model.Channel, { through: model.Subcription });
+  Channel.associate = function (model) {
+    Channel.belongsToMany(model.Users, { through: model.Subcription });
   };
 
-  return User;
+  return Channel;
 };
