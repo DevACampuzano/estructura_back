@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Channel.associate = function (model) {
-    Channel.belongsToMany(model.Users, { through: model.Subcription });
+    Channel.belongsToMany(model.Users, { through: "Subcription" });
   };
 
   return Channel;

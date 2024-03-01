@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   User.associate = function (model) {
-    User.belongsToMany(model.Channel, { through: model.Subcription });
+    User.belongsToMany(model.Channel, { through: "Subcription" });
   };
 
   return User;
